@@ -15,20 +15,17 @@ class Api::V1::EventsController < Api::V1::BaseController
 
     # For simplicity, we'll be erasing all previous events prior to adding the new ones from CSV
     Event.destroy_all
+    Lock.destroy_all
 
     csv_text = request.raw_post
     data = CSV.parse(csv_text, headers: true)
 
     data.each do |row|
-      lock = Lock.find_by(extra_id: row['extra_id'])
-      if lock.nil?
-        lock = Lock.create(extra_id: row['extra_id'], kind: row['kind'])
-      end
-      event = Event.create!(lock: lock, timestamp: Date.parse(row['timestamp']), status_change: row['status'])
+      lock = Lock.find_by(extra_id: row['lock_id']) || Lock.create(extra_id: row['lock_id'], kind: row['kind'])
+      Event.create!(lock: lock, timestamp: Date.parse(row['timestamp']), status_change: row['status'])
     end
 
-
-    render json: {'locks_count': Lock.all.count, 'events_count': Event.all.count}, status: 200
+    render json: { 'locks': Lock.all.count, 'events': Event.all.count }, status: 200
   end
 
   private
