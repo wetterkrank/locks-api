@@ -26,6 +26,9 @@ class Api::V1::EventsController < Api::V1::BaseController
       end
       event = Event.create!(lock: lock, timestamp: Date.parse(row['timestamp']), status_change: row['status'])
     end
+
+
+    render json: {'locks_count': Lock.all.count, 'events_count': Event.all.count}, status: 200
   end
 
   private
