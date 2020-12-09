@@ -6,6 +6,7 @@ class EventPolicy < ApplicationPolicy
   end
 
   def create?
+    # No need to authorize specific users for now
     true
   end
 end

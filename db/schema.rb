@@ -18,14 +18,13 @@ ActiveRecord::Schema.define(version: 2020_12_09_150020) do
   create_table "events", force: :cascade do |t|
     t.datetime "timestamp"
     t.string "status_change"
-    t.bigint "lock_id", null: false
+    t.string "lock_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["lock_id"], name: "index_events_on_lock_id"
   end
 
-  create_table "locks", force: :cascade do |t|
-    t.string "extra_id"
+  create_table "locks", id: :serial, force: :cascade do |t|
     t.string "kind"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -1,2 +1,12 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container mt-5">
+  <h1>API test app</h1>
+  <p>
+    Use this endpoint to POST the CSV file:<br>
+    <%= api_v1_events_url %>
+  </p>
+
+  <p>
+    The request must have content-type multipart/form-data, the key for csv contents is 'report'.<br>
+    Add these headers for authentication: X-User-Email, X-User-Token.
+  </p>
+</div>
