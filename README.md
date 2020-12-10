@@ -1,8 +1,8 @@
 ## A sample coding task from Le Wagon
 
 ### Task description
-Build an API endpoint that will receive a CSV file with the list of events (smart locks going online/offline) and save it in the database.
-The API must have token-based authentication.
+Build an API endpoint that will receive a CSV file with the list of events (smart locks going online/offline) and save the events in the database.
+The API must use token-based authentication.
 
 Example of the CSV file:
 ```
