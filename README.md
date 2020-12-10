@@ -14,7 +14,7 @@ timestamp,lock_id,kind,status_change
 2017-05-01T00:50:30Z,89987171,gateway,online
 ```
 
-### How to install and run
+### How to install and run the solution
 - clone the repo
 - run bundle install
 - run rails db:migrate db:seed
